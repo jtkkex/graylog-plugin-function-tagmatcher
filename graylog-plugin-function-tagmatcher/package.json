@@ -1,0 +1,25 @@
+{
+  "name": "XMLTagMatcherFunction",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "jtkkex/graylog-plugin-function-tagmatcher"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "build": "./node_modules/.bin/webpack",
+    "lint": "./node_modules/.bin/eslint -c .eslintrc src/**/*"
+  },
+  "keywords": [
+    "graylog"
+  ],
+  "author": "Jouni Karvo <kex@iki.fi>",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "webpack": "^1.12.2",
+    "graylog-web-plugin": "file:../graylog2-server/graylog2-web-interface/packages/graylog-web-plugin"
+  }
+}
