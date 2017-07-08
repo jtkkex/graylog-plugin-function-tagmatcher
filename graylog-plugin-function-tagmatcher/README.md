@@ -4,7 +4,7 @@
 
 This plugin implements a pipeline processing function tagmatcher(string tag, string source) : String.
 
-The function can be used in pipelines to extract a simple field from and XML message.
+The function can be used in pipelines to extract a simple field from an XML message.
 
 **Required Graylog version:** 2.0 and later
 
