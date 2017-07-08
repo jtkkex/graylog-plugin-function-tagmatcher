@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/jtkkex/graylog-plugin-function-tagmatcher.svg?branch=master)](https://travis-ci.org/jtkkex/graylog-plugin-function-tagmatcher)
 
-__Use this paragraph to enter a description of your plugin.__
+This plugin implements a pipeline processing function tagmatcher(string tag, string source) : String.
+
+The function can be used in pipelines to extract a simple field from and XML message.
 
 **Required Graylog version:** 2.0 and later
 
@@ -30,8 +32,34 @@ dramatically by making use of hot reloading. To do this, do the following:
 Usage
 -----
 
-__Use this paragraph to document the usage of your plugin__
+Notes:
+* the tag may not contain characters < or \>
+* the function returns only the first match within the string
+* the match may contain other tags within
 
+An example pipeline function:
+
+```
+rule "test rule"
+when
+    true
+then
+    let matchsource = to_string($message.message);
+    let matchresult = tagmatcher("test",matchsource);
+    set_field("matchresult",matchresult);
+end
+```
+
+This pipeline function would make the following extractions:
+
+| example message | matchresult |
+|-----------------|-------------|
+|<test\>ddd</test\>ggg|ddd|
+|ff<test\>ddd</test\>ggg|ddd|
+|fff<test\>ddd</test\>|ddd|
+|<test\>ddd<test\>ddd</test\>ggg</test\>ggg|ddd<test\>ddd|
+|<test\>ddd</tet\>ggg| |
+|<test\>ddd<testi\>ddd</testi\>ggg</test\>ggg|ddd<testi\>ddd</testi\>ggg|
 
 Getting started
 ---------------
