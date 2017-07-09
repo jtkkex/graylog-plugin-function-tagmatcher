@@ -126,7 +126,7 @@ public class XMLTagMatcherFunction extends AbstractFunction<String> {
     public FunctionDescriptor<String> descriptor() {
     	return FunctionDescriptor.<String>builder()
                 .name(NAME)
-                .description("Returns the string within tags, e.g. tagmatcher(string tag, string source) finds the first occurrence of <tag>ddd</tag> and returns ddd.")
+                .description("Returns the string within XML tags.")
                 .params(tagParam,sourceParam)
                 .returnType(String.class)
                 .build();
