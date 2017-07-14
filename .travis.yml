@@ -16,7 +16,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: <enter your encrypted GitHub access token>
+    secure: 88b0a30834d9f2539fdce6b214d657f9d59cae16
   file:
     - "${RELEASE_PKG_FILE}"
     - "${RELEASE_DEB_FILE}"
