@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.plugins</groupId>
     <artifactId>graylog-plugin-function-tagmatcher</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -21,7 +21,7 @@
         <connection>scm:git:git@github.com:jtkkex/graylog-plugin-function-tagmatcher.git</connection>
         <developerConnection>scm:git:git@github.com:jtkkex/graylog-plugin-function-tagmatcher.git</developerConnection>
         <url>https://github.com/jtkkex/graylog-plugin-function-tagmatcher</url>
-        <tag>1.0.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
