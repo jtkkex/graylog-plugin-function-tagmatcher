@@ -101,16 +101,16 @@ public class XMLTagMatcherFunction extends AbstractFunction<String> {
         			j++;
         			break;
         		case 6: // check closing tag closing >
-			    if  (matchsource.charAt(i) == '>') {	
-				matchstate=7;
-				} else {
-				matchstate=3;
-			    }
-			    break;
+			    	if  (matchsource.charAt(i) == '>') {
+						matchstate=7;
+					} else {
+						matchstate=3;
+			    	}
+			    	break;
         		case 7:
         		default:
-			    i= matchsource.length();
-			    break;
+			    	i= matchsource.length();
+			    	break;
         	}
         }
         	
