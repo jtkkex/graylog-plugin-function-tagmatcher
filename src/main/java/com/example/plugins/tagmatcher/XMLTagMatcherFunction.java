@@ -1,9 +1,7 @@
 package com.example.plugins.tagmatcher;
 
 import org.graylog.plugins.pipelineprocessor.EvaluationContext;
-import org.graylog.plugins.pipelineprocessor.ast.expressions.Expression;
 import org.graylog.plugins.pipelineprocessor.ast.functions.AbstractFunction;
-import org.graylog.plugins.pipelineprocessor.ast.functions.Function;
 import org.graylog.plugins.pipelineprocessor.ast.functions.FunctionArgs;
 import org.graylog.plugins.pipelineprocessor.ast.functions.FunctionDescriptor;
 import org.graylog.plugins.pipelineprocessor.ast.functions.ParameterDescriptor;
@@ -35,8 +33,6 @@ public class XMLTagMatcherFunction extends AbstractFunction<String> {
     @Override
     public String evaluate(FunctionArgs functionArgs, EvaluationContext evaluationContext) {
     	String matchtag = tagParam.required(functionArgs, evaluationContext);
-
-        
         String matchsource = sourceParam.required(functionArgs, evaluationContext);
 
         if (matchtag == null) {
@@ -51,9 +47,12 @@ public class XMLTagMatcherFunction extends AbstractFunction<String> {
         LOG.debug("Running tagmatcher pipeline function with tag [{}] and source string [{}].",matchtag,matchsource);
         
         // First outer loop
-        int resultstart=0,resultend=0,i,j=0;
+        int resultstart=0; 	// starting point of the match found
+        int resultend=0;  	// ending point of the match found
+		int i,j=0;			// indices for comparing the strings.  i for the matchsource and j for the matchtag
         int taglen = matchtag.length()-1;
-        int matchstate = 0;
+        int matchstate = 0;	// matching uses a state machine approach.
+							// State 0 is the initial state and state 7 the state of a successful match
         
         for (i=0;i<matchsource.length();i++) {
         	switch (matchstate) {
